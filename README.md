@@ -38,6 +38,7 @@ flowchart TD
 │   └── utils/
 │       └── plotting.py     # Training metric visualization
 ├── tests/                  # Automated tests
+├── Dockerfile              # Container image definition
 ├── .gitignore
 ├── requirements.txt
 └── README.md
@@ -62,6 +63,20 @@ python -m src.main
 The training run displays a chart and saves it to
 `output/rl_training_results.png`. The `output/` directory is created
 automatically when needed.
+
+## Run with Docker
+
+Build the image from the repository root:
+
+```bash
+docker build -t rl-credit-agent .
+```
+
+Run the training and save its chart to the local `output/` directory:
+
+```powershell
+docker run --rm -v "${PWD}\output:/app/output" rl-credit-agent
+```
 
 ## Run the tests
 
